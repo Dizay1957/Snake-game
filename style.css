@@ -1,0 +1,116 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    overflow: hidden;
+}
+
+.container {
+    background: #0f0c29;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+    text-align: center;
+    position: relative;
+    border: 1px solid rgba(102, 126, 234, 0.3);
+}
+
+h1 {
+    color: #86efac;
+    margin-bottom: 15px;
+    font-size: 2.5em;
+    text-shadow: 0 0 10px rgba(134, 239, 172, 0.5);
+}
+
+.score-board {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #a78bfa;
+}
+
+#canvas {
+    border: 3px solid #4ade80;
+    border-radius: 10px;
+    background: #0a0a0f;
+    display: block;
+    margin: 0 auto 20px;
+    cursor: pointer;
+    outline: none;
+}
+
+#canvas:focus {
+    border-color: #86efac;
+    box-shadow: 0 0 15px rgba(134, 239, 172, 0.6);
+}
+
+.game-over {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #1a1a2e;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+    z-index: 10;
+    border: 2px solid #4ade80;
+}
+
+.game-over.hidden {
+    display: none;
+}
+
+.game-over h2 {
+    color: #ef4444;
+    margin-bottom: 15px;
+    text-shadow: 0 0 10px rgba(239, 68, 68, 0.5);
+}
+
+.game-over p {
+    margin-bottom: 20px;
+    font-size: 1.2em;
+    color: #a78bfa;
+}
+
+#restart {
+    background: linear-gradient(135deg, #4ade80 0%, #22c55e 100%);
+    color: #0f0c29;
+    border: none;
+    padding: 12px 30px;
+    font-size: 1em;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.2s;
+    box-shadow: 0 4px 15px rgba(74, 222, 128, 0.3);
+}
+
+#restart:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(74, 222, 128, 0.5);
+}
+
+.instructions {
+    color: #a78bfa;
+    font-size: 0.9em;
+    margin-top: 10px;
+}
+
