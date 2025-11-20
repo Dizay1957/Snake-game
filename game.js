@@ -21,6 +21,25 @@ let highScore = 0;
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
 
+// Make canvas responsive for web
+function resizeCanvas() {
+    const container = canvas.parentElement;
+    const maxWidth = Math.min(400, container.clientWidth - 60);
+    const scale = maxWidth / CANVAS_SIZE;
+    
+    if (scale < 1) {
+        canvas.style.width = maxWidth + 'px';
+        canvas.style.height = maxWidth + 'px';
+    } else {
+        canvas.style.width = CANVAS_SIZE + 'px';
+        canvas.style.height = CANVAS_SIZE + 'px';
+    }
+}
+
+// Resize on load and window resize
+window.addEventListener('resize', resizeCanvas);
+resizeCanvas();
+
 // Load high score
 highScore = parseInt(localStorage.getItem('snakeHighScore')) || 0;
 document.getElementById('highScore').textContent = highScore;

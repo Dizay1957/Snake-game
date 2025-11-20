@@ -6,18 +6,18 @@
 
 html, body {
     height: 100%;
-    overflow: hidden;
+    overflow-x: hidden;
 }
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 20px;
-    overflow: hidden;
+    overflow-y: auto;
 }
 
 .container {
@@ -28,6 +28,9 @@ body {
     text-align: center;
     position: relative;
     border: 1px solid rgba(102, 126, 234, 0.3);
+    max-width: 500px;
+    width: 100%;
+    margin: 0 auto;
 }
 
 h1 {
@@ -35,6 +38,12 @@ h1 {
     margin-bottom: 15px;
     font-size: 2.5em;
     text-shadow: 0 0 10px rgba(134, 239, 172, 0.5);
+}
+
+@media (max-width: 600px) {
+    h1 {
+        font-size: 2em;
+    }
 }
 
 .score-board {
@@ -54,11 +63,20 @@ h1 {
     margin: 0 auto 20px;
     cursor: pointer;
     outline: none;
+    max-width: 100%;
+    height: auto;
 }
 
 #canvas:focus {
     border-color: #86efac;
     box-shadow: 0 0 15px rgba(134, 239, 172, 0.6);
+}
+
+@media (max-width: 500px) {
+    #canvas {
+        width: 100%;
+        max-width: 400px;
+    }
 }
 
 .game-over {
@@ -112,5 +130,51 @@ h1 {
     color: #a78bfa;
     font-size: 0.9em;
     margin-top: 10px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    .container {
+        padding: 20px;
+        margin: 10px;
+    }
+    
+    .score-board {
+        font-size: 1em;
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .game-over {
+        padding: 20px;
+        max-width: 90%;
+    }
+    
+    .game-over h2 {
+        font-size: 1.5em;
+    }
+    
+    .game-over p {
+        font-size: 1em;
+    }
+    
+    #restart {
+        padding: 10px 25px;
+        font-size: 0.9em;
+    }
+    
+    .instructions {
+        font-size: 0.8em;
+    }
+}
+
+@media (max-width: 400px) {
+    h1 {
+        font-size: 1.5em;
+    }
+    
+    .container {
+        padding: 15px;
+    }
 }
 
