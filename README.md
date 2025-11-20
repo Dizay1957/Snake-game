@@ -62,14 +62,14 @@ Then navigate to `http://localhost:8000` in your browser.
 ### Clone the Repository
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/snake-game.git
-cd snake-game
+git clone https://github.com/Dizay1957/Snake-game.git
+cd Snake-game
 npm install
 ```
 
 ## 🌐 Live Demo
 
-Play the game online: [Deploy on Vercel/Netlify]
+🎮 **Play the game online**: [https://snake-game-umber-pi.vercel.app/](https://snake-game-umber-pi.vercel.app/)
 
 ## 🛠️ Technologies Used
 
@@ -130,7 +130,7 @@ npm run build
 
 ## 🤝 Contributing
 
-Contributions, issues, and feature requests are welcome! Feel free to check the [issues page](https://github.com/YOUR_USERNAME/snake-game/issues).
+Contributions, issues, and feature requests are welcome! Feel free to check the [issues page](https://github.com/Dizay1957/Snake-game/issues).
 
 ## 📄 License
 
@@ -140,8 +140,9 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 **El Yazid**
 
-- GitHub: [@YOUR_USERNAME](https://github.com/YOUR_USERNAME)
-- Project Link: [https://github.com/YOUR_USERNAME/snake-game](https://github.com/YOUR_USERNAME/snake-game)
+- GitHub: [@Dizay1957](https://github.com/Dizay1957)
+- Project Link: [https://github.com/Dizay1957/Snake-game](https://github.com/Dizay1957/Snake-game)
+- Live Demo: [https://snake-game-umber-pi.vercel.app/](https://snake-game-umber-pi.vercel.app/)
 
 ## 🙏 Acknowledgments
 
