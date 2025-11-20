@@ -31,7 +31,16 @@
             <p>Score: <span id="finalScore">0</span></p>
             <button id="restart">Play Again</button>
         </div>
-        <p class="instructions">Use Arrow Keys or WASD to play</p>
+        <p class="instructions desktop-only">Use Arrow Keys or WASD to play</p>
+        <p class="instructions mobile-only">Swipe on the game or use the buttons below</p>
+        <div class="mobile-controls">
+            <button class="control-btn" id="upBtn" aria-label="Up">↑</button>
+            <div class="control-row">
+                <button class="control-btn" id="leftBtn" aria-label="Left">←</button>
+                <button class="control-btn" id="downBtn" aria-label="Down">↓</button>
+                <button class="control-btn" id="rightBtn" aria-label="Right">→</button>
+            </div>
+        </div>
     </div>
     <script src="game.js"></script>
 </body>

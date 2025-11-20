@@ -21,23 +21,22 @@ let highScore = 0;
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
 
-// Make canvas responsive for web
+// Make canvas responsive for web and mobile
 function resizeCanvas() {
     const container = canvas.parentElement;
-    const maxWidth = Math.min(400, container.clientWidth - 60);
-    const scale = maxWidth / CANVAS_SIZE;
+    const isMobile = window.innerWidth <= 600;
+    const padding = isMobile ? 40 : 60;
+    const maxWidth = Math.min(400, container.clientWidth - padding);
     
-    if (scale < 1) {
-        canvas.style.width = maxWidth + 'px';
-        canvas.style.height = maxWidth + 'px';
-    } else {
-        canvas.style.width = CANVAS_SIZE + 'px';
-        canvas.style.height = CANVAS_SIZE + 'px';
-    }
+    canvas.style.width = maxWidth + 'px';
+    canvas.style.height = maxWidth + 'px';
 }
 
 // Resize on load and window resize
 window.addEventListener('resize', resizeCanvas);
+window.addEventListener('orientationchange', () => {
+    setTimeout(resizeCanvas, 100);
+});
 resizeCanvas();
 
 // Load high score
@@ -309,10 +308,121 @@ function handleKey(e) {
     }
 }
 
+// Mobile touch controls
+function setupMobileControls() {
+    document.getElementById('upBtn').addEventListener('click', () => {
+        if (direction.y === 0) {
+            if (!gameRunning) {
+                gameRunning = true;
+                lastUpdateTime = performance.now();
+            }
+            direction = {x: 0, y: -1};
+        }
+    });
+    
+    document.getElementById('downBtn').addEventListener('click', () => {
+        if (direction.y === 0) {
+            if (!gameRunning) {
+                gameRunning = true;
+                lastUpdateTime = performance.now();
+            }
+            direction = {x: 0, y: 1};
+        }
+    });
+    
+    document.getElementById('leftBtn').addEventListener('click', () => {
+        if (direction.x === 0) {
+            if (!gameRunning) {
+                gameRunning = true;
+                lastUpdateTime = performance.now();
+            }
+            direction = {x: -1, y: 0};
+        }
+    });
+    
+    document.getElementById('rightBtn').addEventListener('click', () => {
+        if (direction.x === 0) {
+            if (!gameRunning) {
+                gameRunning = true;
+                lastUpdateTime = performance.now();
+            }
+            direction = {x: 1, y: 0};
+        }
+    });
+}
+
+// Swipe gesture support for mobile
+let touchStartX = 0;
+let touchStartY = 0;
+
+canvas.addEventListener('touchstart', (e) => {
+    e.preventDefault();
+    touchStartX = e.touches[0].clientX;
+    touchStartY = e.touches[0].clientY;
+}, {passive: false});
+
+canvas.addEventListener('touchend', (e) => {
+    e.preventDefault();
+    if (!touchStartX || !touchStartY) return;
+    
+    const touchEndX = e.changedTouches[0].clientX;
+    const touchEndY = e.changedTouches[0].clientY;
+    
+    const diffX = touchStartX - touchEndX;
+    const diffY = touchStartY - touchEndY;
+    
+    if (Math.abs(diffX) > Math.abs(diffY)) {
+        // Horizontal swipe
+        if (diffX > 30 && direction.x === 0) {
+            // Swipe left
+            if (!gameRunning) {
+                gameRunning = true;
+                lastUpdateTime = performance.now();
+            }
+            direction = {x: -1, y: 0};
+        } else if (diffX < -30 && direction.x === 0) {
+            // Swipe right
+            if (!gameRunning) {
+                gameRunning = true;
+                lastUpdateTime = performance.now();
+            }
+            direction = {x: 1, y: 0};
+        }
+    } else {
+        // Vertical swipe
+        if (diffY > 30 && direction.y === 0) {
+            // Swipe up
+            if (!gameRunning) {
+                gameRunning = true;
+                lastUpdateTime = performance.now();
+            }
+            direction = {x: 0, y: -1};
+        } else if (diffY < -30 && direction.y === 0) {
+            // Swipe down
+            if (!gameRunning) {
+                gameRunning = true;
+                lastUpdateTime = performance.now();
+            }
+            direction = {x: 0, y: 1};
+        }
+    }
+    
+    touchStartX = 0;
+    touchStartY = 0;
+}, {passive: false});
+
+// Prevent scrolling on touch
+document.addEventListener('touchmove', (e) => {
+    if (e.target === canvas || e.target.closest('.mobile-controls')) {
+        e.preventDefault();
+    }
+}, {passive: false});
+
 // Event listeners
 document.addEventListener('keydown', handleKey);
 canvas.addEventListener('click', () => canvas.focus());
 document.getElementById('restart').addEventListener('click', initGame);
+setupMobileControls();
 
 // Initial draw
 initGame();
