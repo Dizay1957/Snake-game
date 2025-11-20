@@ -97,25 +97,6 @@ snake-game/
 - **Maximum Speed**: 60ms per move (fastest)
 - **Score**: +10 points per food eaten
 
-## 🚀 Deployment
-
-### Deploy to Vercel
-
-1. Push your code to GitHub
-2. Go to [Vercel](https://vercel.com)
-3. Import your GitHub repository
-4. Vercel will automatically detect it as a static site
-5. Click "Deploy" - done!
-
-### Deploy to Netlify
-
-1. Push your code to GitHub
-2. Go to [Netlify](https://netlify.com)
-3. Import your GitHub repository
-4. Set build command: (leave empty for static site)
-5. Set publish directory: `/`
-6. Click "Deploy"
-
 ## 📝 Development
 
 ### Building for Production
